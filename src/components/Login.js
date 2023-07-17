@@ -26,15 +26,18 @@ function Login() {
             let resJson = await res.json();
             let token=resJson.token;
             console.log(token);
-            if(token!="")
-            {
+            console.log(resJson);
+            if(resJson.message=="login successful!!!" && resJson.token)
+            { console.log("1",resJson);
                 localStorage.setItem("Token",token);
-                // console.log(resJson); 
+                console.log("token recieved in login post");
+                console.log(resJson); 
                 navigate('/mainpage');     
             }
             else
-            {
-             alert(resJson.message);
+            { console.log("2");
+               alert(resJson.message);
+            //    localStorage.clear();
             }
            
             if(res.status===200)
@@ -47,23 +50,28 @@ function Login() {
        
     };
 
-     async function check()
-    {
-         fetch(`http://localhost:8000/getlogin/?token=${JSON.stringify(localStorage.getItem("Token"))}`)             
-        .then(res => res.json())
-        .then(data => { 
-            console.log(data) ;
-            if(data.message='jwt expired')
-            { 
-             navigate('/login');
-            }
-            else
-            {   
-                navigate('/mainpage');
-            }
-        });
-    }
+    
     useEffect(()=>{
+        async function check()
+        {
+             fetch(`http://localhost:8000/getlogin/?token=${JSON.stringify(localStorage.getItem("Token"))}`)             
+            .then(res => res.json())
+            .then(data => { 
+                console.log(data) ;
+                if(data.message=='jwt expired')
+                { 
+                //  localStorage.clear();
+                 navigate('/login'); 
+                }
+                else if(data.message=='jwt must be provided'){
+                 navigate('/login');
+                }
+                else
+                {   
+                    navigate('/mainpage');
+                }
+            });
+        }
       check();
     },[]);
 
@@ -74,9 +82,9 @@ function Login() {
             <form className="loginform">
             <h1 style={{textDecoration: "underline"}}>Login Here</h1>
                 <label >Email</label>
-                <input type='email' value={email} onChange={(e) => { setemail(e.target.value) }} />
+                <input type='text' value={email} onChange={(e) => { setemail(e.target.value) }} />
                 <label>Password</label>
-                <input type='password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
+                <input type='text' value={password} onChange={(e) => { setpassword(e.target.value) }} />
                 <button type='submit' onClick={handlelogin}>Login</button>
                 <div>
                 <Link to='/signup'><button type='button'>signup</button></Link>
