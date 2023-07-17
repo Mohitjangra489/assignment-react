@@ -1,8 +1,11 @@
 ## Prerequisites
-MongoDB
-Node
-npm
-Notice,you need to run client and server runs concurrently in different terminals sessions, in order to make them talk to each other.
+<ol>
+<li>MongoDB</li>
+<li>Node</li>
+<li>Npm</li>
+</ol>
+
+<p>Notice,you need to run client and server runs concurrently in different terminals sessions, in order to make them talk to each other.</p>
 
 ## Server-side usage (PORT:8000)
 
