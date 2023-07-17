@@ -24,7 +24,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  react: "^18.2.0" | cors: "^2.8.5"
  react-dom: "^18.2.0" | express: "^4.18.2"
  react-router-dom: "^6.14.1" | jsonwebtoken: "^9.0.1"
- react-scripts: "5.0.1" | mongodb: "^5.7.0",mongoose: "^7.3.4"
+ react-scripts: "5.0.1" | mongodb: "^5.7.0"
+   ------------------- | mongoose: "^7.3.4"
+  -------------------- | bcrypt: "^5.1.0"
  
 <hr>
 
@@ -36,6 +38,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  <img src="https://github.com/Mohitjangra489/assignment-react/assets/119482895/8f13e95f-1177-4ce1-84f5-ed3d684704f7"/>
   <h1> Mainpage</h1>
  <img src="https://github.com/Mohitjangra489/assignment-react/assets/119482895/3e02e40e-1504-48d3-8202-74d5be384421" />
+ <h1>MongoDB Database</h1>
+ <img src="https://github.com/Mohitjangra489/assignment-react/assets/119482895/375cfd11-4ee4-4c05-b85f-596f4fac11c9" /> 
 
 ### `npm start`
 
