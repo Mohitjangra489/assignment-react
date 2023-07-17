@@ -74,9 +74,9 @@ function Login() {
             <form className="loginform">
             <h1 style={{textDecoration: "underline"}}>Login Here</h1>
                 <label >Email</label>
-                <input type='text' value={email} onChange={(e) => { setemail(e.target.value) }} />
+                <input type='email' value={email} onChange={(e) => { setemail(e.target.value) }} />
                 <label>Password</label>
-                <input type='text' value={password} onChange={(e) => { setpassword(e.target.value) }} />
+                <input type='password' value={password} onChange={(e) => { setpassword(e.target.value) }} />
                 <button type='submit' onClick={handlelogin}>Login</button>
                 <div>
                 <Link to='/signup'><button type='button'>signup</button></Link>
