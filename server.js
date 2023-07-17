@@ -14,12 +14,15 @@ const initdb = require('./public/database/init');
 initdb();
 const usermodel = require('./public/database/users');
 
+let jwttoken="";    
 
 app.get('/getlogin',verifytoken,async (req,res)=>{
  let token=req.query.token;
+});
 
+app.get('/',verifytoken,(req,res)=>{
 
-})
+});
 
 app.post('/login', async function(req,res){ 
     console.log(req.body);
@@ -30,7 +33,7 @@ app.post('/login', async function(req,res){
     {
         if(user.email==data[0].email && user.password==data[0].password){
             console.log("login data is correct");
-            jwt.sign({user},JWT_SECRET_KEY,{expiresIn:'600s'},(error,token)=>{
+            jwt.sign({user},JWT_SECRET_KEY,{expiresIn:'30s'},(error,token)=>{
                 console.log(token);
                 jwttoken=token;
                 res.json({message:"login successful!!!",token:token});
@@ -50,8 +53,12 @@ app.post('/login', async function(req,res){
     
   });
 
+  app.get('/mainpage',verifytoken,(req,res)=>{
+  });
+
 app.post('/home',(req,res)=>{
     // console.log(req.header,req.body);
+    console.log(req.headers["authorization"].split("bearer")[1]);
     res.json("success granted");
     
 })
@@ -100,6 +107,7 @@ app.get('/updateuserdetail',async(req,res)=>{
 app.get('/deleteuser',async(req,res)=>{
   let id=req.query.id;
   let deleted=await usermodel.findByIdAndDelete({"_id":id});
+
   res.json("deleted!");
 
 })
@@ -115,15 +123,19 @@ function verifytoken(req,res,next){
             {
                 res.json(error);
             }
-            // console.log(decoded);
-            req.user=decoded.user;
-            res.json({"message":res.user});
-            next();
+            else
+            {
+                console.log(decoded);
+                req.user=decoded.user;
+                res.json({"message":res.user}); 
+                next();
+            }
+           
             });
     }
     else
     {
-        res.status(401);
+        res.json.status(401);
     }
    
     }
