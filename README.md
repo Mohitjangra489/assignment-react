@@ -1,14 +1,28 @@
+## Prerequisites
+MongoDB
+Node
+npm
+Notice,you need to run client and server runs concurrently in different terminals sessions, in order to make them talk to each other.
+
+## Server-side usage (PORT:8000)
+
+## Client-side usage (PORT:8000)
+
 # install Node.js 
 You have to install node.js in your pc to run the project.
-
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
-
-In the project directory, you can run:
+ ## Dependencies(tech-stacks)
+ Client-side | Server-side
+ --- | ---
+ react: "^18.2.0" | cors: "^2.8.5"
+ react-dom: "^18.2.0" | express: "^4.18.2"
+ react-router-dom: "^6.14.1" | jsonwebtoken: "^9.0.1"
+ react-scripts: "5.0.1" | mongodb: "^5.7.0"
+                       | mongoose: "^7.3.4",
 
 ### `npm start`
 
