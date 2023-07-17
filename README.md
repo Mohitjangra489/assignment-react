@@ -27,8 +27,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  react-scripts: "5.0.1" | mongodb: "^5.7.0",mongoose: "^7.3.4"
 
  ## Screenshots of this project
+ <h1>Login page</h1>
  <img src="https://github.com/Mohitjangra489/assignment-react/assets/119482895/f03d97ec-0816-4163-81e3-c2e58bde4566"/>
+  <h1>Signup page</h1>
  <img src="https://github.com/Mohitjangra489/assignment-react/assets/119482895/8f13e95f-1177-4ce1-84f5-ed3d684704f7"/>
+  <h1> Mainpage</h1>
  <img src="https://github.com/Mohitjangra489/assignment-react/assets/119482895/3e02e40e-1504-48d3-8202-74d5be384421" />
 
 ### `npm start`
