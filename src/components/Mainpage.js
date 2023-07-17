@@ -1,8 +1,12 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import {useNavigate} from 'react-router-dom';
+
 // import { useResolvedPath } from 'react-router-dom';
 
 function Mainpage() {
+let navigate=useNavigate();
+
 
     const [users, setusers] = useState([]);
     const [name, setname] = useState();
@@ -55,6 +59,62 @@ function Mainpage() {
 
     }
 
+    let interval= setInterval(()=>{
+        console.log("setinterval method");
+        async function check()
+        {
+             fetch(`http://localhost:8000/getlogin/?token=${JSON.stringify(localStorage.getItem("Token"))}`)             
+            .then(res => res.json())
+            .then(data => { 
+                console.log(data) ;
+                if(data.message=='jwt expired')
+                { 
+                //  localStorage.clear();
+                  clearInterval(interval);
+                 navigate('/login'); 
+
+                }
+                else if(data.message=='jwt must be provided'){
+                    clearInterval(interval);
+                 navigate('/login');
+                
+                }
+                else
+                {   
+                    navigate('/mainpage');
+                }
+            });
+        }
+      check();
+    },15000);
+
+
+    // useEffect(()=>{
+        
+    //     async function check()
+    //     {
+    //          fetch(`http://localhost:8000/getlogin/?token=${JSON.stringify(localStorage.getItem("Token"))}`)             
+    //         .then(res => res.json())
+    //         .then(data => { 
+    //             console.log(data) ;
+    //             if(data.message=='jwt expired')
+    //             { 
+    //             //  localStorage.clear();
+    //               clearInterval(interval);
+    //              navigate('/login'); 
+
+    //             }
+    //             else if(data.message=='jwt must be provided'){
+    //                 clearInterval(interval);
+    //              navigate('/login');
+                
+    //             }
+               
+    //         });
+    //     }
+    //   check();
+    // })
+
     useEffect(() => {
        getusers();
 
@@ -83,7 +143,9 @@ function Mainpage() {
     return (
         <>
             <div className='tablecontainer'>
+          
                 <table className='table'>
+                   
                     <thead>
                         <tr style={{backgroundColor: "#f0f0f0"}}>
                             <th>Username</th>
