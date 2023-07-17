@@ -16,7 +16,7 @@ function Signup() {
             let obj = {
                 username: user, email: mail, password: pass
             }
-            console.log(obj);
+            // console.log(obj);
 
             let res = await fetch('http://localhost:8000/signup',
                 {
@@ -48,9 +48,9 @@ function Signup() {
                 <label >Username</label>
                 <input type='text' value={user} onChange={(e) => { setuser(e.target.value) }} />
                 <label >Email</label>
-                <input type='text' value={mail} onChange={(e) => { setmail(e.target.value) }} />
+                <input type='email' value={mail} onChange={(e) => { setmail(e.target.value) }} />
                 <label>Password</label>
-                <input type='text' value={pass} onChange={(e) => { setpass(e.target.value) }} />
+                <input type='password' value={pass} onChange={(e) => { setpass(e.target.value) }} />
 
                 <button type='submit' onClick={handlesignup}>Signup</button>
                 <div>
