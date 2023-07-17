@@ -1,4 +1,4 @@
-### Prerequisites
+#### Prerequisites
 <ol>
 <li>MongoDB</li>
 <li>Node</li>
@@ -27,6 +27,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
  react-scripts: "5.0.1" | mongodb: "^5.7.0",mongoose: "^7.3.4"
  
 <hr>
+
  ## Screenshots of this project
  
  <h1>Signup page</h1>
