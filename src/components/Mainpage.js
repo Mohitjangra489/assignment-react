@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom';
 
 function Mainpage() {
 let navigate=useNavigate();
+    let interval;
 
 
     const [users, setusers] = useState([]);
@@ -91,15 +92,16 @@ let navigate=useNavigate();
             });
         }
 // To check the token whether it is expired or not
-    let interval = setInterval(() => {
+    useEffect(()=>{
+     interval = setInterval(() => {
         console.log("setinterval method");
         check();
     }, 15000);
-
+    },[]);
  // to check whether the user is logged in or not
     useEffect(()=>{
       check();
-    })
+    },[]);
 
     useEffect(() => {
        getusers();
