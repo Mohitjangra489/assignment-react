@@ -66,9 +66,7 @@ let navigate=useNavigate();
     }
 
 
-    let interval= setInterval(()=>{
-        console.log("setinterval method");
-        async function check()
+    async function check()
         {
              fetch(`http://localhost:8000/getlogin/?token=${JSON.stringify(localStorage.getItem("Token"))}`)             
             .then(res => res.json())
@@ -84,43 +82,24 @@ let navigate=useNavigate();
                 else if(data.message=='jwt must be provided'){
                     clearInterval(interval);
                  navigate('/login');
-                
+
                 }
-                else
-                {   
+                else {
                     navigate('/mainpage');
                 }
+
             });
         }
+// To check the token whether it is expired or not
+    let interval = setInterval(() => {
+        console.log("setinterval method");
+        check();
+    }, 15000);
+
+ // to check whether the user is logged in or not
+    useEffect(()=>{
       check();
-    },15000);
-
-
-    // useEffect(()=>{
-        
-    //     async function check()
-    //     {
-    //          fetch(`http://localhost:8000/getlogin/?token=${JSON.stringify(localStorage.getItem("Token"))}`)             
-    //         .then(res => res.json())
-    //         .then(data => { 
-    //             console.log(data) ;
-    //             if(data.message=='jwt expired')
-    //             { 
-    //             //  localStorage.clear();
-    //               clearInterval(interval);
-    //              navigate('/login'); 
-
-    //             }
-    //             else if(data.message=='jwt must be provided'){
-    //                 clearInterval(interval);
-    //              navigate('/login');
-                
-    //             }
-               
-    //         });
-    //     }
-    //   check();
-    // })
+    })
 
     useEffect(() => {
        getusers();
