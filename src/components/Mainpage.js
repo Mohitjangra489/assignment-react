@@ -59,6 +59,13 @@ let navigate=useNavigate();
 
     }
 
+     let handlelogout=()=>{
+      localStorage.clear();
+       navigate('/login');
+
+    }
+
+
     let interval= setInterval(()=>{
         console.log("setinterval method");
         async function check()
@@ -158,6 +165,9 @@ let navigate=useNavigate();
                         {tablerows}
                     </tbody>
                 </table>
+            </div>
+             <div>
+                <button onClick={handlelogout}>Logout</button>
             </div>
         </>
     )
